@@ -1,8 +1,7 @@
-
-
 def get_scanner():
     """Lazy get scanner configured scanner when needed"""
     import clamd
+
     from . import conf
 
     if conf.CLAMAV_USE_TCP:

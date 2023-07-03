@@ -1,11 +1,11 @@
 import logging
 
 from django.core.exceptions import ValidationError
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 from django_clamav import get_scanner
-from .conf import CLAMAV_ENABLED
 
+from .conf import CLAMAV_ENABLED
 
 logger = logging.getLogger(__name__)
 
@@ -22,16 +22,18 @@ def validate_file_infection(file):
     scanner = get_scanner()
     try:
         result = scanner.instream(file)
-    except IOError:
+    except OSError:
         # Ping the server if it fails than the server is down
         scanner.ping()
         # Server is up. This means that the file is too big.
-        logger.warning('The file is too large for ClamD to scan it. Bytes Read {}'.format(file.tell()))
+        logger.warning(
+            f"The file is too large for ClamD to scan it. Bytes Read {file.tell()}"
+        )
         file.seek(0)
         return
 
-    if result and result['stream'][0] == 'FOUND':
-        raise ValidationError(_('File is infected with malware'), code='infected')
+    if result and result["stream"][0] == "FOUND":
+        raise ValidationError(_("File is infected with malware"), code="infected")
 
     # Return file pointer to beginning of the file again
     file.seek(0)
