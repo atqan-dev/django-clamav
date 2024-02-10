@@ -9,7 +9,7 @@ This project integrates python-clamd with Django for easy scanning files for vir
 
 Install `django-clamav` package.
 
-    pip install git+https://github.com/QueraTeam/django-clamav.git
+    pip install git+https://github.com/atqan-dev/django-clamav.git
 
 Aditioanlly if you want translations to work you need to add it to installed apps.
 
