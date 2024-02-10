@@ -27,3 +27,5 @@ matrix:
       python: 3.5
     - env: TOXENV=py35-dj111
       python: 3.6
+    - env: TOXENV=py310-dj111
+      python: 3.10
