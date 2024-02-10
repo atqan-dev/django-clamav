@@ -1,6 +1,6 @@
 # django-clamav
 
-This is a fork of https://github.com/vstoykov/django-clamd with some minor customizations.
+This is a fork of https://github.com/vstoykov/django-clamd => https://github.com/QueraTeam/django-clamav with some minor customizations.
 
 This project integrates python-clamd with Django for easy scanning files for viruses on upload
 
